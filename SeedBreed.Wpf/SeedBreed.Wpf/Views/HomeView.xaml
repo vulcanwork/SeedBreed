@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="SeedBreed.Wpf.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             HorizontalAlignment='Stretch'>
+    <StackPanel HorizontalAlignment='Stretch'>
+              <Image  Height='200'
+                     HorizontalAlignment='Center'
+                Source='/Views/vwIcon.gif' />
+            <Label Content="Seed Breed"
+                   HorizontalAlignment='Center'
+               FontFamily='Swis721 Cn BT'
+                   FontWeight='Bold'
+               FontSize='22' />
+    </StackPanel>
+</UserControl>

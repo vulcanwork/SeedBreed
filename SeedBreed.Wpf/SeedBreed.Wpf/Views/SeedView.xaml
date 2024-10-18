@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SeedBreed.Wpf.Views.SeedView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:viewmodels='clr-namespace:SeedBreed.Wpf.ViewModels'
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d='http://schemas.microsoft.com/expression/blend/2008'
+             d:DataContext='{d:DesignInstance Type={x:Type viewmodels:SeedViewModel}}'
+             mc:Ignorable='d'>
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType='Button'
+                   BasedOn='{StaticResource Button}' />
+        </StackPanel.Resources>
+        <DataGrid ItemsSource='{Binding Seedlings.Seeds}'
+                  SelectedItem='{Binding SelectedSeed}'
+                  Style='{StaticResource dg}'>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding SeedId}" />
+                <DataGridTextColumn Header="Strain"
+                                    Binding="{Binding Strain}" />
+                <DataGridTextColumn Header="THC %"
+                                    Binding="{Binding ThcPercentage}" />
+                <DataGridTextColumn Header="Indica"
+                                    Binding="{Binding IndicaPercentage}" />
+                <DataGridTextColumn Header="Sativa"
+                                    Binding="{Binding SativaPercentage}" />
+                <DataGridCheckBoxColumn Header="Feminized"
+                                        Binding="{Binding IsFeminized}" />
+                <DataGridCheckBoxColumn Header="Medical"
+                                        Binding="{Binding IsMedical}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation='Horizontal'
+                    HorizontalAlignment='Center'>
+            <Button Content='Delete'
+                    Command='{Binding DeleteCommand}' />
+            <Button Content='Save'
+                    Command='{Binding SaveCommand}' />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+

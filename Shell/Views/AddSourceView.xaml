@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<ContentPage xmlns='http://schemas.microsoft.com/dotnet/2021/maui'
+             xmlns:x='http://schemas.microsoft.com/winfx/2009/xaml'
+             x:Class='SeedBreed.Views.AddSourceView'
+             xmlns:lib='clr-namespace:SeedBreed.ViewModels;assembly=SeedBreed'
+             x:DataType='{x:Type lib:AddSourceViewModel}'
+             Title='Add Seed Source'>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height='*' />
+            <RowDefinition Height='*' />
+            <RowDefinition Height='*' />
+            <RowDefinition Height='*' />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='Auto' />
+            <ColumnDefinition Width='*' />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row='0'
+               Grid.Column='0'
+               Text='Name:' />
+        <Entry Grid.Column='1'
+               Grid.Row='0'
+               Placeholder='Name'
+               Text='{Binding Source.Name}' />
+        <Label Grid.Row='1'
+               Grid.Column='0'
+               Text='Website:' />
+        <Entry Grid.Column='1'
+               Grid.Row='1'
+               Placeholder='Website'
+               Text='{Binding Source.Website}' />
+        <Label Grid.Row='2'
+               Grid.Column='0'
+               Text='Rating:' />
+        <Entry Grid.Column='1'
+               Grid.Row='2'
+               Placeholder='Rating'
+               Text='{Binding Source.Rating}' />
+        <Button Grid.Row='3'
+                Grid.Column='0'
+                Grid.ColumnSpan='2'
+                Text='Save'
+                Command='{Binding SaveCommand}' />
+    </Grid>
+</ContentPage>

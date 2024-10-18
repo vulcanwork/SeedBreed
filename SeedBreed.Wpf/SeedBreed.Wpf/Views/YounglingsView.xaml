@@ -1,0 +1,76 @@
+﻿<!--# Modified version of the YounglingsView.xaml content with SelectedValue instead of SelectedIndex for ComboBoxes
+updated_younglings_view_content = '''-->
+<UserControl x:Class="SeedBreed.Wpf.Views.YounglingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:igEditors="http://infragistics.com/Editors"
+             xmlns:viewmodels='clr-namespace:SeedBreed.Wpf.ViewModels'
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d='http://schemas.microsoft.com/expression/blend/2008'
+             mc:Ignorable='d'>
+             <!--d:DataContext='{d:DesignInstance Type={x:Type viewmodels:YounglingsViewModel}}'-->
+    <StackPanel Orientation='Horizontal'>
+        <StackPanel.Resources>
+            <Style TargetType='Label' BasedOn='{StaticResource Label}' />
+            <Style TargetType='TextBox' BasedOn='{StaticResource Text}' />
+            <!--<Style TargetType='CheckBox' BasedOn='{StaticResource Checkbox}' />-->
+            <Style TargetType='Button' BasedOn='{StaticResource Button}' />
+        </StackPanel.Resources>
+
+        <StackPanel>
+            <DataGrid ItemsSource='{Binding Seedlings.Germinates}'
+                      SelectedItem='{Binding SelectedGerminate, NotifyOnSourceUpdated=True}'
+                      Style='{StaticResource dg}'>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding GerminateId}" />
+
+                    <DataGridComboBoxColumn Header="Strain">
+                        <DataGridComboBoxColumn.ElementStyle>
+                            <Style TargetType='ComboBox'>
+                                <Setter Property='ItemsSource' Value='{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Path=DataContext.BatchList}' />
+                                <Setter Property='SelectedValue' Value='{Binding SelectedGerminate.Strain}' />
+                                <Setter Property='DisplayMemberPath' Value='Name' />
+                                <Setter Property='SelectedValuePath' Value='Id' />
+                            </Style>
+                        </DataGridComboBoxColumn.ElementStyle>
+                        <DataGridComboBoxColumn.EditingElementStyle>
+                            <Style TargetType='ComboBox'>
+                                <Setter Property='ItemsSource' Value='{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Path=DataContext.BatchList}' />
+                                <Setter Property='SelectedValue' Value='{Binding SelectedGerminate.Strain}' />
+                                <Setter Property='DisplayMemberPath' Value='Name' />
+                                <Setter Property='SelectedValuePath' Value='Id' />
+                            </Style>
+                        </DataGridComboBoxColumn.EditingElementStyle>
+                    </DataGridComboBoxColumn>
+
+                    <DataGridTextColumn Header="Germinate Date" Binding="{Binding GerminationDate, StringFormat=d}" />
+                    <DataGridCheckBoxColumn Header="Did Not Germinate" Binding="{Binding DidNotGerminate}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Orientation='Horizontal' HorizontalAlignment='Center'>
+                <Button Content='Delete' Command='{Binding DeleteCommand}' />
+                <Button Content='Save' Command='{Binding SaveCommand}' />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel>
+            <DataGrid ItemsSource='{Binding Seedlings.Clones}'
+                      SelectedItem='{Binding SelectedClone, NotifyOnSourceUpdated=True}'
+                      Style='{StaticResource dg}'>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding CloneId}" />
+                    <DataGridTextColumn Header="Strain" Binding="{Binding Strain}" />
+                    <DataGridTextColumn Header="Clone Date" Binding="{Binding CloneDate, StringFormat=d}" />
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+<!--'''-->
+
+<!--# Displaying the modified YounglingsView XAML content to ensure the changes are properly implemented
+updated_younglings_view_content[:1000]-->

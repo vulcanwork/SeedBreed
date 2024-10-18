@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>VW.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Views\vwIcon.gif" />
+    <None Remove="vwIcon.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Infragistics.WPF.Editors" Version="23.2.94" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SeedBreed.Core\SeedBreed.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="vwIcon.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VW.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\vwIcon.gif" />
+  </ItemGroup>
+</Project>
