@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:viewmodels='clr-namespace:SeedBreed.Wpf.ViewModels'
+             xmlns:viewModels='clr-namespace:SeedBreed.Wpf.ViewModels'
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d='http://schemas.microsoft.com/expression/blend/2008'
-             d:DataContext='{d:DesignInstance Type={x:Type viewmodels:SeedViewModel}}'
+             d:DataContext='{d:DesignInstance Type={x:Type viewModels:SeedViewModel}}'
              mc:Ignorable='d'>
     <StackPanel>
         <StackPanel.Resources>

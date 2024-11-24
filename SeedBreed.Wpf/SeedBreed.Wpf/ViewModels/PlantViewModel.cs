@@ -18,6 +18,7 @@ public class PlantViewModel : ViewModelBase
     public PlantViewModel(Api api, Seedlings seedlings) : base(api, seedlings) => _ = GetData();
 
     private PlantModel _selectedPlant = new();
+
     public override async Task GetData() => Seedlings.Plants = await _api.GetPlants();
     public override async Task Save()
     {
@@ -62,6 +63,25 @@ public class PlantViewModel : ViewModelBase
     {
         get => _cloneList;
         set => SetProperty(ref _cloneList, value);
+    }
+    private int _germinateIndex;
+    public int GerminateIndex
+    {
+        get => _germinateIndex;
+        set => SetProperty(ref _germinateIndex, value);
+    }
+    private ComboSelector _selectedGerminate;
+    public ComboSelector SelectedGerminate
+    {
+        get => _selectedGerminate;
+        set
+        {
+            SetProperty(ref _selectedGerminate, value);
+            if (SelectedPlant != null)
+            {
+                SelectedPlant.GerminateId = value.Id;
+            }
+        }
     }
     public PlantModel SelectedPlant
     {

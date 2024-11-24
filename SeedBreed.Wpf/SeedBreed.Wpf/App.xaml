@@ -45,7 +45,7 @@
             <Setter Property='Margin'
                     Value='5' />
         </Style>
-        <Style x:Key='Chckebox'
+        <Style x:Key='Check'
                TargetType='{x:Type CheckBox}'>
             <Setter Property='VerticalAlignment'
                     Value='Center' />

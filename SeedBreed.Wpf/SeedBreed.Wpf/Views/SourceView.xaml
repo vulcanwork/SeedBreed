@@ -15,7 +15,7 @@
             <Style TargetType='TextBox'
                    BasedOn='{StaticResource Text}' />
             <Style TargetType='CheckBox'
-                   BasedOn='{StaticResource Chckebox}' />
+                   BasedOn='{StaticResource Check}' />
             <Style TargetType='Button'
                    BasedOn='{StaticResource Button}' />
         </StackPanel.Resources>

@@ -1,8 +1,4 @@
-﻿<!--# Updating the PlantView XAML content to replace SelectedIndex with SelectedValue for robust data binding
-
-# Modified version of the XAML content with SelectedValue instead of SelectedIndex for ComboBoxes
-updated_plant_view_content = '''-->
-<UserControl x:Class="SeedBreed.Wpf.Views.PlantView"
+﻿<UserControl x:Class="SeedBreed.Wpf.Views.PlantView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
@@ -11,8 +7,8 @@ updated_plant_view_content = '''-->
              xmlns:viewmodels='clr-namespace:SeedBreed.Wpf.ViewModels'
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d='http://schemas.microsoft.com/expression/blend/2008'
+             d:DataContext='{d:DesignInstance Type={x:Type viewmodels:PlantViewModel}}'
              mc:Ignorable='d'>
-             <!--d:DataContext='{d:DesignInstance Type={x:Type viewmodels:PlantViewModel}}'-->
     <StackPanel>
         <StackPanel.Resources>
             <Style TargetType='Label' BasedOn='{StaticResource Label}' />
@@ -27,11 +23,12 @@ updated_plant_view_content = '''-->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding PlantId}" />
 
-                <DataGridComboBoxColumn Header="Germinate">
+                <DataGridComboBoxColumn Header="Germinate" >
                     <DataGridComboBoxColumn.ElementStyle>
                         <Style TargetType='ComboBox'>
                             <Setter Property='ItemsSource' Value='{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Path=DataContext.GerminateList}' />
-                            <Setter Property='SelectedValue' Value='{Binding GerminateId,NotifyOnSourceUpdated=True}' />
+                            <Setter Property='SelectedIndex' Value='{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Path = DataContext.GerminateIndex,NotifyOnSourceUpdated=True}' />
+                            <Setter Property='SelectedItem' Value='{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Path = DataContext.SelectedGerminate,NotifyOnSourceUpdated=True}' />
                             <Setter Property='DisplayMemberPath' Value='Name' />
                             <Setter Property='SelectedValuePath' Value='Id' />
                         </Style>
@@ -78,6 +75,3 @@ updated_plant_view_content = '''-->
         </StackPanel>
     </StackPanel>
 </UserControl>
-
-<!--# Displaying the modified XAML content to ensure the changes are properly implemented
-updated_plant_view_content[:1000]-->
